@@ -1,0 +1,21 @@
+<nav id="navbar">
+  <a href="/"><img id="logoImg" src="/assets/logo.png" /></a>
+</nav>
+<h1>Ingresar</h1>
+<section id="loginForm">
+    <div>
+        <form action="/api/users/auth" method="post">
+            <input type="email" class="formInput" placeholder="Ingrese su email" name="email" class="formInput">
+            <br/>
+            <input type="password" class="formInput" placeholder="Ingrese su contraseña" name="password" class="formInput">
+            <br/>
+            <br/>
+            <button class="formBtn" type="submit">Ingresar</button>
+        </form>
+        <a href="/register"><button class="formBtn">Regístrate</button></a>
+        <hr class="divider"/>
+        <a href="/api/users/github"><button class="githubBtn">Ingresar con Github</button></a>
+        <hr class="divider"/>
+        <a href="/passrecover"><button class="formBtn">Olvidaste tu contraseña?</button></a>
+    </div>    
+</section>

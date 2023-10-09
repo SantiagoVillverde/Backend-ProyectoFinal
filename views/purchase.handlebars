@@ -1,0 +1,29 @@
+<nav id="navbar">
+  <a href="/"><img id="logoImg" src="/assets/logo.png" /></a>
+  <div class="navBarInfo">
+    <p>Bienvenido,
+      {{userToShow.first_name}}
+      {{userToShow.last_name}}
+      <br />
+      {{userToShow.email}}
+      <br />
+      Rol:
+      {{userToShow.role}}
+    </p>
+    <input type="hidden" id="cartId" value="{{user.cart}}" />
+    <a href="/products"><button class="navBtn">Ver Productos</button></a>
+    <a href="/current"><button class="navBtn">Mi Carrito</button></a>
+    <form action="/api/users/logout" method="post">
+      <button type="submit">Cerrar sesión</button>
+    </form>
+  </div>
+</nav>
+
+<h1>Compra Finalizada</h1>
+<h2>Datos de su Compra</h2>
+<div class="ticketCont">
+  <p id="messageLogs">
+  </p>
+</div>
+
+<script src="/js/cart.js"></script>

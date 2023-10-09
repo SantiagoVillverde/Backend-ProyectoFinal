@@ -1,0 +1,28 @@
+<h1 class="productListTitle">Listado de Productos (en tiempo real)</h1>
+<h4>Los productos disponibles por el momento son:</h4>
+<div class="tableContainer">
+  <table class="productTable">
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Descripción</th>
+    <th>Código</th>
+    <th>Precio</th>
+    <th>Stock</th>
+    <th>Categoría</th>
+    <tbody id="prodTableBody">
+      {{#each prodList}}
+        <tr id="productRow_{{this._id}}">
+          <td>{{this._id}}</td>
+          <td>{{this.title}}</td>
+          <td>{{this.description}}</td>
+          <td>{{this.code}}</td>
+          <td>{{this.price}}</td>
+          <td>{{this.stock}}</td>
+          <td>{{this.category}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/rtproducts.js"></script>

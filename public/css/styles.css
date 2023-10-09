@@ -1,0 +1,328 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  padding: 0;
+}
+
+body {
+  background-color: antiquewhite;
+}
+
+h1,
+h2 {
+  text-align: center;
+  font-family: Verdana, sans-serif;
+  text-decoration: underline;
+}
+
+h4 {
+  display: inline;
+}
+
+/* INICIO CSS NAVBAR */
+
+#navbar {
+  background-color: #178582;
+  color: whitesmoke;
+  text-align: right;
+  padding-right: 20px;
+  height: 120px;
+  margin-bottom: 10px;
+  border-bottom: 5px solid #183b3a;
+  display: flex;
+  justify-content: space-between;
+}
+
+#navbar p {
+  margin: 0;
+}
+
+#navbar button {
+  background-color: red;
+  color: whitesmoke;
+  border: none;
+  height: 1.5em;
+  box-shadow: 1px 3px 3px black;
+}
+
+#navbar button:hover {
+  cursor: pointer;
+}
+
+#logoImg {
+  height: 80%;
+  align-self: center;
+}
+
+.navBtn {
+  background-color: darkolivegreen !important;
+}
+
+
+/* INICIO CSS PRODUCTOS */
+
+.filterCont {
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+.tableContainer {
+  margin: auto;
+  width: 80%;
+}
+
+.productTable, .userTable {
+  border: 2px black solid;
+  text-align: center;
+  background-color: aliceblue;
+}
+
+th {
+  border-bottom: solid 1.5px black;
+}
+
+tr {
+  border-bottom: 2px black dashed;
+}
+
+td {
+  padding-inline: 10px;
+  border-bottom: dashed black 1px;
+}
+
+td img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: #333 solid 2px;
+}
+
+/* INICIO CSS PANEL PRODUCTOS */
+.prodManagerPanel{
+  border: 2px black solid;
+  text-align: center;
+  background-color: aliceblue;
+  width: 40%;
+  margin: 10px auto;
+}
+
+.prodManagerPanel h2{
+  margin-block: 10px;
+}
+
+.prodManagCont label {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 5px;
+}
+
+.addProdForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.prodManagCont{
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.prodManagCont input,
+.prodManagCont textarea {
+  margin-bottom: 10px;
+}
+
+/* INICIO CSS CHAT */
+
+#chatTitle {
+  text-align: center;
+  font-family: monospace;
+  font-size: 2.5rem;
+}
+
+.chatContainer {
+  background-color: rgb(215, 230, 250);
+  margin-inline: auto;
+  width: 60%;
+}
+
+.messageLogsCont {
+  border: dashed 3px gray;
+}
+
+.chatBoxCont {
+  display: flex;
+  padding: 5px;
+  justify-content: space-around;
+}
+
+#chatBox {
+  width: 90%;
+  height: 50px;
+  background-color: rgb(190, 240, 253);
+}
+
+#sendBtn {
+  width: 100px;
+  background-color: lightblue;
+  font-size: 1.2em;
+  font-family: "Calibri", sans-serif;
+  font-weight: 800;
+}
+
+/* INICIO CSS LOGIN Y REGISTER */
+
+#loginForm {
+  text-align: center;
+  border: 3px dotted gray;
+  width: 250px;
+  margin: 50px auto;
+  height: 350px;
+  padding-top: 25px;
+}
+
+.formInput {
+  background-color: blanchedalmond;
+  height: 40px;
+}
+
+.formInput:not(:last-child), .recovInput:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.formBtn {
+  background-color: chocolate;
+  border-radius: 15%;
+  box-sizing: 200px 200px;
+  height: 30px;
+  margin-top: 10px;
+}
+
+.divider {
+  width: 80%;
+  margin: 10px auto 0;
+  height: 3px;
+  background-color: gray;
+  border: none;
+}
+
+.githubBtn {
+  background-color: #333;
+  color: white;
+  border-radius: 15%;
+  box-sizing: 200px 200px;
+  height: 30px;
+  margin-top: 10px;
+}
+
+#registerForm {
+  text-align: center;
+  border: 3px dotted gray;
+  width: 500px;
+  margin: auto;
+  height: 420px;
+  padding-top: 25px;
+}
+
+#registerForm input {
+  width: 400px;
+}
+
+/* INICIO CSS PURCHASE / CURRENT */
+.userData, .fileUploader {
+  margin-inline: auto;
+  margin-block: 20px;
+  padding-block: 20px;
+  border: #183b3a solid 2px;
+  background-color: aliceblue;
+  width: 400px;
+  text-align: center;
+}
+
+.userData img {
+  width: 100px;
+  border: #333 solid;
+  border-radius: 50%;
+}
+
+.noProfImg {
+  font-style: italic;
+  text-decoration: underline;
+  color: red;
+}
+
+.profImgChange {
+  width: 350px;
+  text-align: center;
+  margin: 10px auto;
+  border: #333 dashed 1px;
+}
+
+.changeProfBtn {
+  margin-block: 10px;
+}
+
+.fileUploader{
+  width: 600px;
+}
+
+.emptyCartMsg {
+  background-color: aliceblue;
+  text-align: center;
+  border: 2px dashed black;
+  width: 500px;
+  margin: auto;
+}
+
+.endPurchCont {
+  text-align: center;
+}
+
+.endPurchBtn {
+  background-color: green;
+  color: whitesmoke;
+  font-size: 1.2em;
+  border: none;
+  height: 3em;
+  box-shadow: 1px 3px 3px black;
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.endPurchBtn:hover {
+  cursor:pointer;
+}
+
+/* INICIO CSS PASS RECOVERY */
+
+#recovForm {
+  text-align: center;
+  border: 3px dotted gray;
+  width: 500px;
+  margin: 50px auto;
+  height: 300px;
+  padding-top: 25px;
+}
+
+.recovDescription {
+  padding-bottom: 20px;
+  font-weight: bold;
+}
+
+.recovInput {
+  background-color: blanchedalmond;
+  height: 40px;
+  width: 300px;
+}
+
+/* INICIO CSS USERLIST */
+
+.userTableCont {
+  margin: auto;
+  width: 60%;
+}

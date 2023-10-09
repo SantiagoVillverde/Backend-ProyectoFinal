@@ -1,0 +1,22 @@
+<nav id="navbar">
+  <a href="/"><img id="logoImg" src="/assets/logo.png" /></a>
+</nav>
+<h1>Registrar nuevo usuario</h1>
+<section id="registerForm">
+    <div>
+        <form action="/api/users" method="post">
+            <input type="text" placeholder="Ingrese su nombre" name="first_name" class="formInput">
+            <br/>
+            <input type="text" placeholder="Ingrese su apellido" name="last_name" class="formInput">
+            <br/>
+            <input type="email" placeholder="Ingrese su email" name="email" class="formInput">
+            <br/>
+            <input type="password" placeholder="Ingrese su contraseña" name="password" class="formInput">
+            <br/>
+            <input type="number" placeholder="Ingrese su edad" name="age" class="formInput">
+            <br/>
+            <br/>
+            <button type="submit" class="formBtn">Registrarse</button>
+        </form>
+    </div>
+</section>

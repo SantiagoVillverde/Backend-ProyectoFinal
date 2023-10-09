@@ -1,0 +1,35 @@
+<nav id="navbar">
+  <a href="/"><img id="logoImg" src="/assets/logo.png" /></a>
+  <div class="navBarInfo">
+    <p>Bienvenido,
+      {{user.first_name}}
+      {{user.last_name}}
+      <br />
+      {{user.email}}
+      <br />
+      Rol:
+      {{user.role}}
+    </p>
+    <input type="hidden" id="cartId" value="{{user.cart}}" />
+    <a href="/products"><button class="navBtn">Ver Productos</button></a>
+    <a href="/current"><button class="navBtn">Mi Carrito</button></a>
+    <form action="/api/users/logout" method="post">
+      <button type="submit">Cerrar sesión</button>
+    </form>
+  </div>
+</nav>
+<div class="chatContainer">
+  <h1 id="chatTitle">Chat</h1>
+  <h2>Últimos mensajes:</h2>
+  <div class="messageLogsCont">
+    <p id="messageLogs">
+    </p>
+  </div>
+  <div class="chatBoxCont">
+    <input id="chatBox" type="text" />
+    <button id="sendBtn">Enviar</button>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/chat.js"></script>

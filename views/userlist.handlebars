@@ -1,0 +1,43 @@
+<nav id="navbar">
+  <a href="/"><img id="logoImg" src="/assets/logo.png" /></a>
+  <div class="navBarInfo">
+    <p>Bienvenido,
+      {{user.first_name}}
+      {{user.last_name}}
+      <br />
+      {{user.email}}
+      <br />
+      Rol:
+      {{user.role}}
+    </p>
+    <input type="hidden" id="cartId" value="{{user.cart}}" />
+    <a href="/current"><button class="navBtn">Mi Carrito</button></a>
+    <a href="/chat"><button class="navBtn">Chat</button></a>
+    <form action="/api/users/logout" method="post">
+      <button type="submit">Cerrar sesión</button>
+    </form>
+  </div>
+</nav>
+<h1>Listado de Usuarios - Panel de Administrador</h1>
+<br />
+<div class="userTableCont">
+  <table class="userTable">
+    <th>Nombre y Apellido</th>
+    <th>Email</th>
+    <th>Rol</th>
+    <th>Última Conexión</th>
+    <th>Acciones</th>
+    {{#each userList}}
+      <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.email}}</td>
+        <td>{{this.role}}</td>
+        <td>{{this.last_connection}}</td>
+        <td><button>Cambiar Rol</button><button onclick="deleteUser('{{this.id}}')">Eliminar Usuario</button></td>
+      </tr>
+    {{/each}}
+  </table>
+  <br />
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/admin.js"></script>

@@ -1,0 +1,204 @@
+<nav id="navbar">
+  <a href="/"><img id="logoImg" src="/assets/logo.png" /></a>
+  <div class="navBarInfo">
+  <p>Bienvenido,
+    {{user.first_name}}
+    {{user.last_name}}
+    <br />
+    {{user.email}}
+    <br />
+    Rol:
+    {{user.role}}
+  </p>
+  <input type="hidden" id="cartId" value="{{user.cart}}" />
+  <a href="/current"><button class="navBtn">Mi Carrito</button></a>
+  <a href="/api/users/premium/{{user._id}}"><button class="navBtn">Cambiar Rol</button></a>
+  <a href="/chat"><button class="navBtn">Chat</button></a>
+  <a href="/userlist"><button class="navBtn">Panel de Usuarios</button></a>
+  <form action="/api/users/logout" method="post">
+    <button type="submit">Cerrar sesión</button>
+  </form>
+  </div>
+</nav>
+<h1>Listado de Productos</h1>
+<br />
+<h2>Los productos disponibles son:</h2>
+<br />
+<div class="tableContainer">
+  <div class="filterCont">
+    <form method="get">
+      <label for="category">Categoría:</label>
+      <select name="category" id="categFilter">
+        <option value="">Elija una categoría</option>
+        <option value="Playstation">Playstation</option>
+        <option value="Xbox">Xbox</option>
+        <option value="Nintendo">Nintendo</option>
+      </select>
+      <label for="limit">Productos por Página:</label>
+      <select name="limit" id="limitFilter">
+        <option value="10">10</option>
+        <option value="5" selected>5</option>
+        <option value="3">3</option>
+      </select>
+      <label for="priceSort">Ordenar por:</label>
+      <select name="sort" id="priceSortFilter">
+        <option value="">Elija un orden</option>
+        <option value="asc">Menor precio</option>
+        <option value="desc">Mayor precio</option>
+      </select>
+      <input type="submit" value="Aplicar filtros" />
+    </form>
+  </div>
+  <table class="productTable">
+    <th>ID</th>
+    <th>Imagen</th>
+    <th>Nombre</th>
+    <th>Descripción</th>
+    <th>Código</th>
+    <th>Precio</th>
+    <th>Stock</th>
+    <th>Categoría</th>
+    {{#each prodList.payload}}
+      <tr>
+        <td>{{this._id}}</td>
+        <td><img src="/data/images/products/{{this.thumbnail}}" alt="Product Image"/></td>
+        <td>{{this.title}}</td>
+        <td>{{this.description}}</td>
+        <td>{{this.code}}</td>
+        <td>{{this.price}}</td>
+        <td>{{this.stock}}</td>
+        <td>{{this.category}}</td>
+        <td><button onclick="addToCart('{{this._id}}')">Añadir al carrito</button></td>
+      </tr>
+    {{/each}}
+  </table>
+  <br />
+  <div>
+    {{#if prodList.hasPrevPage}}
+      <a
+        href="{{prodList.prevLink}}&limit={{prodList.limit}}&availability={{prodList.availability}}&category={{prodList.category}}&sort={{prodList.sort}}"
+      >← Anterior</a>
+    {{/if}}
+    &nbsp;
+    {{prodList.page}}
+    &nbsp;
+    {{#if prodList.hasNextPage}}
+      <a
+        href="{{prodList.nextLink}}&limit={{prodList.limit}}&availability={{prodList.availability}}&category={{prodList.category}}&sort={{prodList.sort}}"
+      >Siguiente →</a>
+    {{/if}}
+  </div>
+</div>
+{{#unless isUser}}
+  <div class="prodManagerPanel">
+    <h2>Panel de Productos</h2>
+    <div class="prodManagCont">
+      <h4>Agregar un producto</h4>
+      <form class="addProdForm" method="post" action="/api/products" enctype="multipart/form-data">
+        <label for="title">Nombre del producto:</label>
+        <input
+          name="title"
+          type="text"
+          placeholder="Inserte el nombre del producto"
+        />
+        <label for="description">Descripción del producto:</label>
+        <textarea
+          name="description"
+          placeholder="Inserte la descripción"
+        ></textarea>
+        <label for="code">Código:</label>
+        <input name="code" type="text" placeholder="Inserte el código" />
+        <label for="price">Precio:</label>
+        <input name="price" type="number" placeholder="Inserte el precio" />
+        <label for="stock">Stock:</label>
+        <input name="stock" type="number" placeholder="Inserte el stock" />
+        <label for="category">Categoría:</label>
+        <input name="category" type="text" placeholder="Inserte la categoría" />
+        <label for="thumbnail">Imagen:</label>
+        <input
+          name="thumbnail"
+          type="file"
+        />
+        <input type="submit" value="Agregar Producto"/>
+      </form>
+    </div>
+    <hr />
+    <div class="prodManagCont">
+      <h4>Actualizar un producto</h4>
+      <br />
+      <label for="updateProdId">ID del producto:</label>
+      <input
+        name="updateProdId"
+        id="updateProdId"
+        type="text"
+        placeholder="Inserte el ID del producto a actualizar"
+      />
+      <br />
+      <br />
+      <label for="updateTitle">Nombre del producto:</label>
+      <input
+        name="updateTitle"
+        id="updateTitle"
+        type="text"
+        placeholder="Inserte el nuevo nombre del producto"
+      />
+      <label for="updateDescription">Descripción del producto:</label>
+      <textarea
+        name="updateDescription"
+        id="updateDescription"
+        placeholder="Inserte la nueva descripción"
+      ></textarea>
+      <label for="updateCode">Código:</label>
+      <input
+        name="updateCode"
+        id="updateCode"
+        type="text"
+        placeholder="Inserte el nuevo código"
+      />
+      <label for="updatePrice">Precio:</label>
+      <input
+        name="updatePrice"
+        id="updatePrice"
+        type="number"
+        placeholder="Inserte el nuevo precio"
+      />
+      <label for="updateStock">Stock:</label>
+      <input
+        name="updateStock"
+        id="updateStock"
+        type="number"
+        placeholder="Inserte el nuevo stock"
+      />
+      <label for="updateCategory">Categoría:</label>
+      <input
+        name="updateCategory"
+        id="updateCategory"
+        type="text"
+        placeholder="Inserte la nueva categoría"
+      />
+      <label for="updateThumbnail">Imagen en URL:</label>
+      <input
+        name="updateThumbnail"
+        id="updateThumbnail"
+        type="text"
+        placeholder="Inserte la nueva URL de la imagen"
+      />
+      <button onclick="updateProd()">Actualizar Producto</button>
+    </div>
+    <hr/>
+    <div class="prodManagCont">
+      <h4>Eliminar un producto</h4>
+      <br />
+      <label for="prodId">Id del producto:</label>
+      <input
+        name="prodId"
+        id="prodId"
+        type="text"
+        placeholder="Inserte el ID del producto"
+      />
+      <button onclick="deleteProd()">Eliminar Producto</button>
+    </div>
+  </div>
+{{/unless}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/products.js"></script>
